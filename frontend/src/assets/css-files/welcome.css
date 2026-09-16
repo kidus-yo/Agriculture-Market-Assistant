@@ -48,10 +48,10 @@
 }
 .card-collection .card{
     width: fit-content;
-    max-width: 400px;        /* Keeps paragraph text wrapped neatly inside */
-    text-align: left;        /* Aligns all text inside to the left */
-    padding: 24px;           /* Adds inner space around text */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Preserves card border */
+    max-width: 400px;        
+    text-align: left; 
+    padding: 24px;           
+    border: 1px solid rgba(255, 255, 255, 0.3); 
     border-radius: 12px;
 }
 .card-collection .card h3{
@@ -59,6 +59,6 @@
     font-size: 24px;
 }
 .card-collection .card h1{
-    white-space: nowrap;    /* Keeps 'Predictive AI Analysis' on one line if desired */
+    white-space: nowrap;    
     text-align: left;
 }
