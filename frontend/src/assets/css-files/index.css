@@ -3,18 +3,13 @@ body{
     margin: 0;
     width: 100vw;
     min-height: 100vh;
-    position: relative;
-}
-.header{
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    font-size: 20px;
-    padding: 10px 10px 15px 15px;
 }
-.header p{
-    margin: 0;
+.footer{
+  text-align: center;
+  font-size: medium;
+  margin-top: auto;
 }
 .card{
     border: 1px solid hsl(0, 0%, 80%);
@@ -25,54 +20,4 @@ body{
     text-align: center;
     max-width: 250px;
     display: inline-block;
-}
-.register-login{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 90%;
-    max-width: 600px;
-    padding: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    box-sizing: border-box
-}
-.register-login h1, span{
-    text-align: center;
-}
-.navigate{
-    background: transparent;
-    border: none;
-    padding: 0;
-    color: #00f0ff; 
-    font: inherit;
-    cursor: pointer;
-    text-decoration: underline;
-}
-.navigate:hover{
-    color: #ffffff;
-}
-.confirm{
-    border: 0.5px solid black;
-    background-color: rgb(11, 48, 22);
-    border-radius: 5px;
-    font-size: medium;
-    width: 100px;
-    height: 45px;
-    text-align: center;
-    color: azure;
-    display: block;
-    margin: 0 auto;
-}
-.confirm:hover{
-    background-color: rgb(26, 150, 63);
-    cursor: pointer;
-}
-.confirm:active{
-    background-color: rgb(32, 228, 90);
 }
