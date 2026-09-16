@@ -21,7 +21,7 @@ export default function Welcome(){
                 <h3>Platform Value</h3>
                 <h1>Predictive AI Analysis</h1>
                 This platform is useful to predict the status of the soil, weather and regional trends to forecast future possibilities.
-            </div>         
+            </div>
         </div>         
         <Footer/>
         </>
