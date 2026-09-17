@@ -9,7 +9,7 @@ export default function Header(){
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
-            <hr></hr>
+            <hr className="line"></hr>
         </header>
     );
 }

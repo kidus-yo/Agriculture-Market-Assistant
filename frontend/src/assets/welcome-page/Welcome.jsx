@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Footer from "../../Footer.jsx";
+import Header from "../../Header.jsx"
 
 export default function Welcome(){
 
@@ -10,6 +11,7 @@ export default function Welcome(){
   };
     return(
         <>
+        <Header/>
         <div className="head">        
             <p className="logo">AgriVox</p><br/>
             <p className="paragraph">An AI-powered voice assistant bridging the gap for Ethiopian farmers and traders. Access
