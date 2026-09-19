@@ -5,6 +5,7 @@ import './assets/css-files/index.css'
 import './assets/css-files/background.css'
 import './assets/css-files/welcome.css'
 import './assets/css-files/register-login.css'
+import './assets/css-files/header.css'
 import App from './App.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
