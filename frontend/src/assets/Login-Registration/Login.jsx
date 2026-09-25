@@ -29,31 +29,77 @@ const EyeIcon = ({ show }) => show ? (
   </svg>
 );
 
-// Agri-Tech Node Graph Background SVG
 const NetworkGraphic = () => (
-  <svg className="network-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="var(--agri-green-vibrant)" strokeWidth="1" opacity="0.35">
-      <line x1="80" y1="120" x2="220" y2="80" />
-      <line x1="220" y1="80" x2="380" y2="160" />
-      <line x1="80" y1="120" x2="160" y2="260" />
-      <line x1="160" y1="260" x2="320" y2="240" />
-      <line x1="380" y1="160" x2="320" y2="240" />
-      <line x1="160" y1="260" x2="100" y2="400" />
-      <line x1="320" y1="240" x2="380" y2="380" />
-      <line x1="100" y1="400" x2="260" y2="420" />
-      <line x1="260" y1="420" x2="380" y2="380" />
-      <line x1="220" y1="80" x2="160" y2="260" />
-      <line x1="320" y1="240" x2="260" y2="420" />
-    </g>
-    {/* Nodes */}
-    <circle cx="80" cy="120" r="5" fill="var(--agri-green-primary)" />
-    <circle cx="220" cy="80" r="7" fill="var(--agri-green-vibrant)" />
-    <circle cx="380" cy="160" r="6" fill="var(--agri-green-primary)" />
-    <circle cx="160" cy="260" r="8" fill="var(--agri-green-vibrant)" />
-    <circle cx="320" cy="240" r="10" fill="var(--agri-green-primary)" />
-    <circle cx="100" cy="400" r="6" fill="var(--agri-green-vibrant)" />
-    <circle cx="260" cy="420" r="7" fill="var(--agri-green-primary)" />
-    <circle cx="380" cy="380" r="5" fill="var(--agri-green-vibrant)" />
+  <svg
+      className="registration-svg"
+      viewBox="0 0 500 500"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', height: 'auto', maxHeight: '420px' }}
+      >
+      <defs>
+        <linearGradient id="regLeafGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#15803d" />
+          <stop offset="50%" stopColor="#16a34a" />
+          <stop offset="100%" stopColor="#4ade80" />
+        </linearGradient>
+
+        <linearGradient id="regAccentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#eab308" />
+          <stop offset="100%" stopColor="#10b981" />
+        </linearGradient>
+
+        <radialGradient id="regBgGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#22c55e" stopOpacity="0.2" />            
+          <stop offset="100%" stopColor="#22c55e" stopOpacity="0" />
+        </radialGradient>
+
+        <filter id="nodeGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="6" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
+
+      <circle cx="250" cy="250" r="210" fill="url(#regBgGlow)" />
+      <circle cx="250" cy="250" r="185" stroke="#22c55e" strokeWidth="1.5" strokeDasharray="6 8" opacity="0.35" />
+      <circle cx="250" cy="250" r="140" stroke="#10b981" strokeWidth="1.5" strokeDasharray="4 6" opacity="0.45" />
+      <path d="M 130 250 A 120 120 0 0 1 370 250" stroke="url(#regAccentGrad)" strokeWidth="3" strokeLinecap="round" opacity="0.6" />
+      <path d="M 160 250 A 90 90 0 0 1 340 250" stroke="url(#regLeafGrad)" strokeWidth="4" strokeLinecap="round" />
+      <path d="M 250 360 V 215" stroke="url(#regLeafGrad)" strokeWidth="6" strokeLinecap="round" />
+
+      <path
+        d="M 250 285 C 190 275 170 220 215 210 C 238 220 248 250 250 285 Z"          
+        fill="url(#regLeafGrad)"
+      />
+
+      <path
+        d="M 250 250 C 310 240 330 185 285 175 C 262 185 252 215 250 250 Z"
+        fill="url(#regLeafGrad)"
+      />
+
+      <circle cx="250" cy="195" r="15" fill="url(#regAccentGrad)" filter="url(#nodeGlow)" />
+      <circle cx="250" cy="195" r="6" fill="#ffffff" />
+
+      <g opacity="0.85">
+        <line x1="250" y1="195" x2="340" y2="135" stroke="#22c55e" strokeWidth="1.5" strokeDasharray="3 3" />
+        <circle cx="340" cy="135" r="8" fill="#16a34a" />
+        <circle cx="340" cy="135" r="3.5" fill="#ffffff" />            
+        <line x1="250" y1="195" x2="165" y2="145" stroke="#22c55e" strokeWidth="1.5" strokeDasharray="3 3" />
+        <circle cx="165" cy="145" r="7" fill="#eab308" />
+        <line x1="250" y1="285" x2="360" y2="295" stroke="#10b981" strokeWidth="1.5" strokeDasharray="3 3" />
+        <circle cx="360" cy="295" r="7" fill="#10b981" />
+        <line x1="250" y1="320" x2="145" y2="325" stroke="#10b981" strokeWidth="1.5" strokeDasharray="3 3" />
+        <circle cx="145" cy="325" r="6" fill="#22c55e" />        
+      </g>
+
+      <g transform="translate(198, 375)">
+        <rect x="0" y="10" width="5" height="20" rx="2.5" fill="#16a34a" opacity="0.5" />
+        <rect x="15" y="2" width="5" height="28" rx="2.5" fill="#22c55e" />
+        <rect x="30" y="-8" width="5" height="38" rx="2.5" fill="#10b981" />
+        <rect x="45" y="-3" width="5" height="33" rx="2.5" fill="#eab308" />
+        <rect x="60" y="5" width="5" height="25" rx="2.5" fill="#16a34a" opacity="0.8" />
+        <rect x="75" y="12" width="5" height="18" rx="2.5" fill="#16a34a" opacity="0.4" />        
+      </g>
   </svg>
 );
 
