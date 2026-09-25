@@ -124,6 +124,7 @@ export default function Register(){
     };
 
     const [showPassword, setShowPassword] = useState(false);
+    const [showPassword1, setShowPassword1] = useState(false);
     const [formData, setFormData] = useState({ email: '', password: '' });
 
     const handleChange = (e) => {
@@ -239,7 +240,7 @@ export default function Register(){
                             <div className="input-icon-wrapper">
                                 <span className="input-icon"><LockIcon /></span>
                                 <input
-                                type={showPassword ? 'text' : 'password'}
+                                type={showPassword1 ? 'text' : 'password'}
                                 name="password1"
                                 placeholder="Re-enter your password"
                                 value={formData.password1}
@@ -249,10 +250,10 @@ export default function Register(){
                                 <button
                                 type="button"
                                 className="password-toggle-btn"
-                                onClick={() => setShowPassword(!showPassword)}
+                                onClick={() => setShowPassword1(!showPassword1)}
                                 aria-label="Toggle password visibility"
                                 >
-                                <EyeIcon show={showPassword} />
+                                <EyeIcon show={showPassword1} />
                                 </button>
                             </div>
                         </div>
