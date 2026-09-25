@@ -117,7 +117,7 @@ const NetworkGraphic = () => (
 );
 
 export default function Register(){
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const handleNavigate = () => {
         navigate('/Login')
@@ -215,7 +215,7 @@ export default function Register(){
                         </div>
 
                         <div className="form-field">
-                            <label>Password</label>
+                            <label>Enter your Password</label>
                             <div className="input-icon-wrapper">
                                 <span className="input-icon"><LockIcon /></span>
                                 <input
@@ -225,7 +225,27 @@ export default function Register(){
                                 value={formData.password}
                                 onChange={handleChange}
                                 required
-                                />
+                                />                                
+                                <button
+                                type="button"
+                                className="password-toggle-btn"
+                                onClick={() => setShowPassword(!showPassword)}
+                                aria-label="Toggle password visibility"
+                                >
+                                <EyeIcon show={showPassword} />
+                                </button>
+                            </div>
+                            <label>Re-enter your Password</label>
+                            <div className="input-icon-wrapper">
+                                <span className="input-icon"><LockIcon /></span>
+                                <input
+                                type={showPassword ? 'text' : 'password'}
+                                name="password1"
+                                placeholder="Re-enter your password"
+                                value={formData.password1}
+                                onChange={handleChange}
+                                required
+                                />                                
                                 <button
                                 type="button"
                                 className="password-toggle-btn"
