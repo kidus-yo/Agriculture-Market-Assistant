@@ -3,14 +3,12 @@ import IntroPage from "./assets/Intro-page/IntroPage.jsx";
 import Register from "./assets/Login-Registration/Register.jsx";
 import Login from "./assets/Login-Registration/Login.jsx";
 import Footer from "./Footer.jsx";
-import Header from "./Header.jsx";
 
 
 function App() {
   return (
     <>
       <div className="agrivox-page-wrapper">
-        <Header/>
         <main className="app-main-content">
           <Routes>
             <Route path="/" element={<IntroPage/>} />
