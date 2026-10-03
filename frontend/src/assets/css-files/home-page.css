@@ -1,0 +1,214 @@
+.homepage-wrapper {
+  min-height: calc(100vh - 5.5rem);
+  background: linear-gradient(180deg, #f0fdf4 0%, #e6f4ea 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.top-box {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 54rem;
+  border-radius: 2rem;
+  padding: 3.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(167, 243, 208, 0.6);
+  box-shadow: 0 20px 40px -15px rgba(5, 150, 105, 0.07),
+              0 0 0 1px rgba(16, 185, 129, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-box:hover {
+  box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.12);
+}
+
+.highlighted-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #dcfce7;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  padding: 0.45rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.75rem;
+}
+
+.flash-icon {
+  color: #10b981;
+}
+
+.top-header {
+  font-size: 2.75rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin: 0 0 1rem 0;
+  max-width: 40rem;
+}
+
+.sub-text {
+  font-size: 1.05rem;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0 0 2.5rem 0;
+  max-width: 34rem;
+  line-height: 1.5;
+}
+
+.mic-button-wrapper {
+  margin: 1rem 0 3rem 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-button-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background-color: rgba(16, 185, 129, 0.2);
+  animation: ripple 2.5s infinite ease-out;
+  z-index: 0;
+}
+
+.voice-mic-btn {
+  position: relative;
+  z-index: 1;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border: 4px solid #a7f3d0;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  box-shadow: 0 12px 24px -6px rgba(5, 150, 105, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.voice-mic-btn:hover {
+  transform: scale(1.06);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 16px 32px -6px rgba(5, 150, 105, 0.5);
+  border-color: #6ee7b7;
+}
+
+.voice-mic-btn:active {
+  transform: scale(0.97);
+}
+
+.mic-svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.btn-label {
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.suggested-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.suggested-title {
+  font-size: 0.725rem;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chips-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.chip-btn {
+  background-color: #f8fafc;
+  color: #334155;
+  border: 1.5px solid #e2e8f0;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.chip-btn:hover {
+  background-color: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08);
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .top-box {
+    padding: 2.5rem 1.25rem;
+    border-radius: 1.5rem;
+  }
+
+  .top-header {
+    font-size: 1.9rem;
+  }
+
+  .sub-text {
+    font-size: 0.95rem;
+  }
+
+  .voice-mic-btn {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+
+  .mic-button-wrapper::before {
+    width: 7rem;
+    height: 7rem;
+  }
+}
