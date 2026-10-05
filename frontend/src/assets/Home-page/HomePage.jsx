@@ -122,8 +122,47 @@ export default function Homepage(){
             <span>Demand: Very High</span>
           </div>
         </div>
-
       </div>
+
+      <div className="lower-section">
+        <div className="lower-box">
+          <div className="lower-upper">
+            <h3 className="lower-tag">DIRECT MARKET ACCESS</h3>
+            <h1 className="lower-title">List Your Harvest via Voice</h1>
+            <p className="lower-desc">Eliminate middleman price goughing. Speak your crop yield and location to isntantly list your products for verified regional wholesalers.</p>
+          </div>
+          <button className="voice-list-btn">
+            <span>🎙️</span>
+            <span>Speak via Your Voice</span>
+          </button>
+        </div>
+
+        <div className="lower-lower">
+          <div className="lower-lower-upper">
+            <div className="lower-lower-left">
+              <h2>Verified Regional Buyers</h2> 
+              <span>Automated SMS and voice matching with bulk buyers.</span>
+            </div>
+            
+            <div className="lower-lower-right">
+              <span className="badge-active">3 Active Near You</span>
+            </div>
+          </div>
+
+          <div className="lower-lower-middle">
+            <div className="buyer-avatar">A1</div>
+            <div className="buyer-info">
+              <h4>Addis Farmers Union</h4>
+              <span>Seeking 50+ Quintals White Teff</span>
+            </div>
+            <button className="connect-btn">connect</button>
+          </div>
+
+          <div className="lower-lower-lower">
+            <button className="browse-btn">Browse All Bulk Buyers →</button>
+          </div>
+        </div>
+      </div>  
     </div>
   );
 
