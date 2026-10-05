@@ -358,8 +358,6 @@ export default function IntroPage(){
 
         </section>
       </main>
-
-
     </div>        
   );
 }
