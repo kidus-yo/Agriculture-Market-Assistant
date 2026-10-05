@@ -44,6 +44,86 @@ export default function Homepage(){
           </div>
         </div>
       </div>
+
+      <div className="middle-box">
+        <div className="top-left">
+          <h1>Predictive Commodity Prices</h1>
+          <span>Machine learning price forecast updated hourly across major regional hubs.</span>
+        </div>
+        <div className="top-right">
+          <button>View All Markets →</button>
+        </div>
+
+        <div className="card-box">
+          <div className="card-top">
+            <div className="left">
+              🌾
+            </div>
+            <div className="middle">
+              <h1>White Teff</h1>
+              <span>Addis Ababa Central</span>
+            </div>
+            <div className="right">
+              + 3.1%
+            </div>
+          </div>
+          <div className="card-middle">
+            <h1>8,200 ETB</h1>
+            <span>/Quintal</span>
+            <h3>📈 14-Day Forecast: Projected to reach 8,450 ETB</h3>
+          </div>
+          <div className="card-lower">
+            <span>Demand: High</span>
+          </div>
+        </div>
+
+        <div className="card-box">
+          <div className="card-top">
+            <div className="left">
+              🌾
+            </div>
+            <div className="middle">
+              <h1>Red Teff</h1>
+              <span>Bahir Dar Regional</span>
+            </div>
+            <div className="right">
+              + +1.8%
+            </div>
+          </div>
+          <div className="card-middle">
+            <h1>6,750 ETB</h1>
+            <span>/Quintal</span>
+            <h3>📈 14-Day Forecast: Moderate upward trend</h3>
+          </div>
+          <div className="card-lower">
+            <span>Demand: Medium</span>
+          </div>
+        </div>
+
+        <div className="card-box">
+          <div className="card-top">
+            <div className="left">
+              ☕
+            </div>
+            <div className="middle">
+              <h1>Export Grade Coffee</h1>
+              <span>Jimma Exchange</span>
+            </div>
+            <div className="right3">
+              ➔ Stable
+            </div>
+          </div>
+          <div className="card-middle">
+            <h1>18,400 ETB</h1>
+            <span>/Quintal</span>
+            <h3>📈 14-Day Forecast: Prices holding steady</h3>
+          </div>
+          <div className="card-lower">
+            <span>Demand: Very High</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 

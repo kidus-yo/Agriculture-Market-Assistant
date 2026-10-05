@@ -130,29 +130,6 @@
   animation: pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.weather-badge {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: #ecfdf5;
-  border: 1.5px solid #a7f3d0;
-  padding: 0.4rem 1.25rem;
-  border-radius: 0.75rem;
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #065f46;
-  width: 100%;
-}
-
-.weather-icon {
-  color: #059669;
-}
-
-.weather-dot {
-  color: #34d399;
-}
-
 .controls-wrapper {
   display: flex;
   align-items: center;
