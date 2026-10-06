@@ -5,6 +5,12 @@ import Login from "./assets/Login-Registration/Login.jsx";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import HomePage from "./assets/Home-page/HomePage.jsx";
+import MyFarm from "./assets/My-Farm/MyFarm.jsx";
+import Recommendations from "./assets/Recommendations/Recommendations.jsx";
+import Weather from "./assets/Weather/Weather.jsx";
+import MarketPlace from "./assets/Market-Place/MarketPlace.jsx";
+import Profile from "./assets/Profile/Profile.jsx";
+import Logout from "./assets/Logout/Logout.jsx";
 
 function MainLayout(){
   return(
@@ -27,6 +33,12 @@ function App() {
 
             <Route element={<MainLayout/>}>
               <Route path="/Home" element={<HomePage/>}/>
+              <Route path="/MyFarm" element={<MyFarm/>}/>
+              <Route path="/Recommendations" element={<Recommendations/>}/>
+              <Route path="/Weather" element={<Weather/>}/>
+              <Route path="/MarketPlace" element={<MarketPlace/>}/>
+              <Route path="/Profile" element={<Profile/>}/>
+              <Route path="/Logout" element={<Logout/>}/>
             </Route>
           </Routes>
         </main>

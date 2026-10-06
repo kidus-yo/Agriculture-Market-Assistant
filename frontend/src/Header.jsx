@@ -1,5 +1,6 @@
 import {useState} from 'react';
-import {Mic, Volume2, Bell, User} from 'lucide-react';
+import {Mic, Menu} from 'lucide-react';
+import Dashboard from './assets/Dashboard/Dashboard.jsx'
 
 const SproutIcon = () => (
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -17,11 +18,20 @@ export default function Header(currentLang, setLanguage, onVoiceClick){
         if (onVoiceClick) onVoiceClick;
     };
 
+    const [isDahboardOpen, setIsDashboardOpen] = useState(false);
+
+    const toggleDashboard = () => {
+        setIsDashboardOpen(!isDahboardOpen);
+    };
+
     return(
         <header className="header-root">
             <div className="header-container">
                 <div className='brand-wrapper'>
-                    <div className='brand-icon'>
+                    <button onClick={toggleDashboard} className='menu-toggle-btn' title='Open Dashboard' aria-label='Toggle Navigation'>
+                        <Menu size={24} strokeWidth={2.2}/>
+                    </button>
+                    <div className='brand-icon'>                    
                         <SproutIcon/>
                     </div>
                     <div>
@@ -44,10 +54,6 @@ export default function Header(currentLang, setLanguage, onVoiceClick){
                 </div>
 
                 <div className='controls-wrapper'>
-                    <button onClick={() => alert("Screen Reader Activated!")} className='icont-btn' title='Read Page Aloud'>
-                        <Volume2 size={22} strokeWidth={2.2}/>
-                    </button>
-
                     <div className='lang-switcher'>
                         <button onClick={() => setLanguage('am')} className={`lang-btn ${currentLang === 'am' ? 'active' : 'inactive'}`}>
                             አማርኛ
@@ -55,16 +61,10 @@ export default function Header(currentLang, setLanguage, onVoiceClick){
                         <button onClick={() => setLanguage('en')} className={`lang-btn ${currentLang === 'en' ? 'active' : 'inactive'}`}>
                             English
                         </button>
-                        <button className='icon-btn' title='Notifications'>
-                            <Bell size={22} strokeWidth={2.2}/>
-                            <span className='notification-dot'></span>
-                        </button>
-                        <div className='user-avatar' title='User Profile'>
-                            <User size={22} strokeWidth={2.5}/>
-                        </div>
                     </div>
                 </div>
             </div>
+            <Dashboard isOpen={isDahboardOpen} onClose={toggleDashboard}/>
         </header>
         
     );
