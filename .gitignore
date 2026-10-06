@@ -1,0 +1,27 @@
+
+__pycache__/
+*.py[cod]
+*.pyo
+
+
+backend/venv/
+venv/
+.venv/
+
+# Django
+db.sqlite3
+db.sqlite3-journal
+
+
+.env
+.env.*
+!.env.example
+
+
+media/
+staticfiles/
+
+
+.DS_Store
+Thumbs.db
+desktop.ini
