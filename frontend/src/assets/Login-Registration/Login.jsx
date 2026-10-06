@@ -110,6 +110,12 @@ export default function Login() {
     navigate('/Register')
   };
 
+  const navigate2 = useNavigate();
+
+  const handleNavigate2 = () => {
+    navigate2("/Home")
+  };
+
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '' });
 
@@ -192,7 +198,7 @@ export default function Login() {
               <a href="#forgot" className="forgot-link">Forgot password?</a>
             </div>
 
-            <button type="submit" className="login-btn-primary">LOG IN</button>
+            <button type="submit" className="login-btn-primary" onClick={handleNavigate2}>LOG IN</button>
           </form>
 
           <div className="social-divider">

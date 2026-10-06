@@ -123,6 +123,12 @@ export default function Register(){
         navigate('/Login')
     };
 
+    const navigate2 = useNavigate();
+
+    const handleNavigate2 = () => {
+        navigate2("/Home")
+    };
+
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword1, setShowPassword1] = useState(false);
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -258,7 +264,7 @@ export default function Register(){
                             </div>
                         </div>
 
-                        <button type="submit" className="login-btn-primary">REGISTER</button>
+                        <button type="submit" className="login-btn-primary" onClick={handleNavigate2}>REGISTER</button>
                     </form>
 
                     <div className="social-divider">
