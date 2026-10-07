@@ -112,7 +112,7 @@ export default function Login() {
   };
 
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState({ identifier: '', password: '' });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -121,25 +121,41 @@ export default function Login() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
-    try{
+    try {
+        const response = await API.post('/auth/login/', formData);
 
-      const response = await API.post('/auth/login', formData);
+        console.log('Login successful:', response.data);
 
-      if (response.data?.token){
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('access_token', response.data.access);
+        localStorage.setItem('refresh_token', response.data.refresh);
+
         navigate('/Home');
-      }
-    }catch(err) {
-      setError(err.response?.data?.message  || 'Login Failed. Please check your credentials.');
-    }finally{
-      setIsLoading(false);
+
+    } catch (err) {
+        console.error(
+            'Login error:',
+            err.response?.data || err.message
+        );
+
+        const data = err.response?.data;
+
+        if (data?.identifier) {
+            setError(data.identifier[0]);
+        } else if (data?.password) {
+            setError(data.password[0]);
+        } else {
+            setError('Login failed. Please check your credentials.');
+        }
+
+    } finally {
+        setIsLoading(false);
     }
-  };
+};
 
   return (
     <div className="login-page-wrapper">
@@ -181,9 +197,9 @@ export default function Login() {
                 <span className="input-icon"><UserIcon/></span>
                 <input
                   type="text"
-                  name="username"
+                  name="identifier"
                   placeholder="Enter your username(first name) or email"
-                  value={formData.username}
+                  value={formData.identifier}
                   onChange={handleChange}
                   required
                 />
