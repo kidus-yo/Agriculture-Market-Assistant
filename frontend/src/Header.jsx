@@ -36,7 +36,7 @@ export default function Header(currentLang, setLanguage, onVoiceClick){
                     </div>
                     <div>
                         <span className='brand-title'>AgriVox</span>
-                        <span className='brand-subtitle'>Market Intelligence</span>
+                        <span className='brand-subtitle'>AGRI-INTELLIGENCE ECOSYSTEM</span>
                     </div>
                 </div>
 
