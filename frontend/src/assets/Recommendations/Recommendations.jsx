@@ -49,7 +49,7 @@ export default function Recommendations() {
   return (
     <div className="recommendations-container">
       <div className="header-section">
-        <h1 className="main-title">🌱 Crop Recommendation</h1>
+        <h1 className="main-title">Crop Recommendation</h1>
         <p className="sub-title">AI-driven agricultural insights tailored to your field conditions</p>
       </div>
 
