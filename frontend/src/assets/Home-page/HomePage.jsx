@@ -24,7 +24,7 @@ export default function Homepage(){
           Low-Latency Dialect Voice Engine
         </div>
         <h1 className='top-header'>Ask AgriVox Anything in Your Language</h1>
-        <p className='sub-text'>Tap the microophone and ask for market prices, wewather advosories, or list your harvest</p>
+        <p className='sub-text'>Tap the microphone and ask for market prices, weather advisories, or list your harvest</p>
         <div className='mic-button-wrapper'>
           <button className='voice-mic-btn' aria-label="Tap to speak">
             <MicIcon/>
