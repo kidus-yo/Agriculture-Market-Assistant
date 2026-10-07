@@ -13,7 +13,8 @@ class RegisterSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(write_only= True, style={"input_type":"password"})
     class Meta:
         model = User
-        fields= ["id", "username","email", "password", "password2"]
+        fields= ["id", "first_name","last_name","email",
+                 "phone_number", "password", "password2"]
         read_only_fields = ["id"]
 
     def validate(self, attrs):
@@ -25,7 +26,18 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
             validated_data.pop("password2")
-            return User.objects.create_user(**validated_data)
+
+            first_name = validated_data["first_name"]
+
+            username= first_name
+
+            counter = 2
+
+            while User.objects.filter(username=username).exists():
+                username = f"{first_name}{counter}"
+                counter+=1
+
+            return User.objects.create_user( username=username,**validated_data)
 
 #LOGIN WORK
 class LoginSerializer(serializers.Serializer):
