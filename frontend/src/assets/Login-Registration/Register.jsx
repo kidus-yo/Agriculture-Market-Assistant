@@ -163,7 +163,7 @@ export default function Register(){
                 password: formData.password,
             };
 
-        const response = await API.post('/auth/register', payload);
+        const response = await API.post('/auth/register/', payload);
 
         if (response.data?.token){
             localStorage.setItem('token', response.data.token);
