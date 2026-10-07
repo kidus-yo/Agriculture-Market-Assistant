@@ -126,6 +126,7 @@ export default function Register(){
 
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword1, setShowPassword1] = useState(false);
+
     const [formData, setFormData] = useState({ 
         firstname: '',
         lastname: '',
@@ -139,12 +140,13 @@ export default function Register(){
     const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
         setError('');
 
         if (formData.password !== formData.password1) {
@@ -152,31 +154,64 @@ export default function Register(){
             return;
         }
 
-            setIsLoading(true);
+        setIsLoading(true);
 
-        try{
+        try {
             const payload = {
-                firstName: formData.firstname,
-                lastName: formData.lastname,
-                phoneNumber: formData.phonenumber,
+                first_name: formData.firstname,
+                last_name: formData.lastname,
                 email: formData.email,
+                phone_number: formData.phonenumber,
                 password: formData.password,
+                password2: formData.password1,
             };
 
-        const response = await API.post('/auth/register', payload);
+            const response = await API.post(
+                '/auth/register/',
+                payload
+            );
 
-        if (response.data?.token){
-            localStorage.setItem('token', response.data.token);
-            navigate('/Home');
-        }else{
+            console.log(
+                'Registration successful:',
+                response.data
+            );
+
             navigate('/Login');
-        }
-        }catch(err) {
-        setError(err.response?.data?.message  || 'Registration Failed. Please try again.');
-        }finally{
-        setIsLoading(false);
+
+        } catch (err) {
+            console.error(
+                'Registration error:',
+                err.response?.data || err.message
+            );
+
+            const data = err.response?.data;
+
+            if (data?.email) {
+                setError(data.email[0]);
+
+            } else if (data?.phone_number) {
+                setError(data.phone_number[0]);
+
+            } else if (data?.password) {
+                setError(data.password[0]);
+
+            } else if (data?.password2) {
+                setError(data.password2[0]);
+
+            } else if (data?.message) {
+                setError(data.message);
+
+            } else {
+                setError(
+                    'Registration failed. Please try again.'
+                );
+            }
+
+        } finally {
+            setIsLoading(false);
         }
     };
+
     return(
         <div className='login-page-wrapper'>
             <div className="login-card-container">
