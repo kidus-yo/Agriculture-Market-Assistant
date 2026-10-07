@@ -1,3 +1,4 @@
+import API from '../../api/axios.js';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 
@@ -123,23 +124,58 @@ export default function Register(){
         navigate('/Login')
     };
 
-    const navigate2 = useNavigate();
-
-    const handleNavigate2 = () => {
-        navigate2("/Home")
-    };
-
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword1, setShowPassword1] = useState(false);
-    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [formData, setFormData] = useState({ 
+        firstname: '',
+        lastname: '',
+        phonenumber: '',
+        email: '', 
+        password: '', 
+        password1: '',
+    });
+
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
+        setError('');
+
+        if (formData.password !== formData.password1) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+            setIsLoading(true);
+
+        try{
+            const payload = {
+                firstName: formData.firstname,
+                lastName: formData.lastname,
+                phoneNumber: formData.phonenumber,
+                email: formData.email,
+                password: formData.password,
+            };
+
+        const response = await API.post('/auth/register', payload);
+
+        if (response.data?.token){
+            localStorage.setItem('token', response.data.token);
+            navigate('/Home');
+        }else{
+            navigate('/Login');
+        }
+        }catch(err) {
+        setError(err.response?.data?.message  || 'Registration Failed. Please try again.');
+        }finally{
+        setIsLoading(false);
+        }
     };
     return(
         <div className='login-page-wrapper'>
@@ -159,6 +195,12 @@ export default function Register(){
                         <h2>Welcome To AgriVox!</h2>
                         <p>Create an account:</p>
                     </div>
+
+                    {error && (
+                        <p className="error-message" style={{ color: '#ff4d4d', marginBottom: '1rem' }}>
+                            {error}
+                        </p>
+                    )}
 
                     <form onSubmit={handleSubmit} className="login-form">
                         <div className="form-field">
@@ -242,6 +284,9 @@ export default function Register(){
                                 <EyeIcon show={showPassword} />
                                 </button>
                             </div>
+                        </div>
+                        
+                        <div className="form-field">
                             <label>Re-enter your Password</label>
                             <div className="input-icon-wrapper">
                                 <span className="input-icon"><LockIcon /></span>
@@ -264,7 +309,9 @@ export default function Register(){
                             </div>
                         </div>
 
-                        <button type="submit" className="login-btn-primary" onClick={handleNavigate2}>REGISTER</button>
+                        <button type="submit" className="login-btn-primary" disabled={isLoading}>
+                            {isLoading ? 'REGISTERING...' : 'REGISTER'}
+                        </button>
                     </form>
 
                     <div className="social-divider">

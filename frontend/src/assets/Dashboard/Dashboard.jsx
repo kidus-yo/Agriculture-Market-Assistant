@@ -76,11 +76,13 @@ export default function Dashboard({isOpen, onClose}){
   const handleNavigate6 = () => {
     navigate6("Profile")
   }
-  const navigate7 = useNavigate();
-  const handleNavigate7 = () => {
-    navigate7("Logout")
-  }
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    if (onClose) onClose();
+    navigate('/Login', {replace: true})
+  };
   return(
     <>
     {isOpen && (
@@ -123,7 +125,7 @@ export default function Dashboard({isOpen, onClose}){
       </nav>
 
       <div className='dashboard-footer'>
-        <button onClick={handleNavigate7} className='dashboard-logout-btn'>
+        <button onClick={handleLogout} className='dashboard-logout-btn'>
           <LogoutIcon/>
           <span>Logout</span>
         </button>

@@ -23,7 +23,7 @@ export default function Header(currentLang, setLanguage, onVoiceClick){
     const toggleDashboard = () => {
         setIsDashboardOpen(!isDahboardOpen);
     };
-
+    
     return(
         <header className="header-root">
             <div className="header-container">

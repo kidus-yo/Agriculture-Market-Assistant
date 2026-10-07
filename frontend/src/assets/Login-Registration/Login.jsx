@@ -1,3 +1,4 @@
+import API from '../../api/axios.js';
 import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 
@@ -7,9 +8,9 @@ const SproutIcon = () => (
   </svg>
 );
 
-const MailIcon = () => (
+const UserIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
   </svg>
 );
 
@@ -110,22 +111,34 @@ export default function Login() {
     navigate('/Register')
   };
 
-  const navigate2 = useNavigate();
-
-  const handleNavigate2 = () => {
-    navigate2("/Home")
-  };
-
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    setError('');
+    setIsLoading(true);
+
+    try{
+
+      const response = await API.post('/auth/login', formData);
+
+      if (response.data?.token){
+        localStorage.setItem('token', response.data.token);
+        navigate('/Home');
+      }
+    }catch(err) {
+      setError(err.response?.data?.message  || 'Login Failed. Please check your credentials.');
+    }finally{
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -155,16 +168,22 @@ export default function Login() {
             <p>Log in to your account.</p>
           </div>
 
+          {error && (
+            <p className='error-message' style={{ color: '#ff4d4d', marginBottom: '1rem'}}>
+              {error}
+            </p>
+          )}
+
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-field">
-              <label>Email</label>
+              <label>Username(First Name) or Email</label>
               <div className="input-icon-wrapper">
-                <span className="input-icon"><MailIcon /></span>
+                <span className="input-icon"><UserIcon/></span>
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={formData.email}
+                  type="text"
+                  name="username"
+                  placeholder="Enter your username(first name) or email"
+                  value={formData.username}
                   onChange={handleChange}
                   required
                 />
@@ -198,7 +217,9 @@ export default function Login() {
               <a href="#forgot" className="forgot-link">Forgot password?</a>
             </div>
 
-            <button type="submit" className="login-btn-primary" onClick={handleNavigate2}>LOG IN</button>
+            <button type="submit" className="login-btn-primary" disabled={isLoading}>
+              {isLoading ? 'LOGGING IN...' : 'LOG IN'}
+            </button>
           </form>
 
           <div className="social-divider">
