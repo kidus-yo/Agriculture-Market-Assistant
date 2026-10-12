@@ -18,7 +18,6 @@ export default function Recommendations() {
 
   const [cropsData, setCropsData] = useState([]);
 
-  // Map backend keys to frontend UI structure safely
   const convertBackendToFrontendFarm = (farm) => {
     return {
       location: farm.location || "Addis Ababa",
@@ -45,7 +44,6 @@ export default function Recommendations() {
     }));
   };
 
-// Run once when component opens
   useEffect(() => {
     const loadRecommendations = async () => {
       setIsLoading(true);
@@ -71,7 +69,6 @@ export default function Recommendations() {
           text: err.response?.data?.detail || 'Could not fetch live recommendations. Displaying default insights.',
         });
 
-        // Fallback mock data if backend is offline/initializing
         setCropsData([
           {
             id: "c1",
