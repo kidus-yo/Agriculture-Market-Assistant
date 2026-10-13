@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'users',
     'rest_framework',
     'corsheaders',
+    'farms',
+    'recommendations',
     
 ]
 REST_FRAMEWORK = {
