@@ -40,5 +40,5 @@ class MeView(generics.GenericAPIView):
         return Response({
             "id": request.user.id,
             "username": request.user.username,
-            "email": request.user.password
+            "email": request.user.email
         })

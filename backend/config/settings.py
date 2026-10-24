@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'farms',
     'recommendations',
+    'weather_api',
     
 ]
 REST_FRAMEWORK = {
